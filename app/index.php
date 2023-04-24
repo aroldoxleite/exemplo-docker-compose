@@ -1,6 +1,6 @@
 <?php
 
-    // Conecta ao banco de dados MySQL usando variáveis de ambiente
+    // Conecta ao banco de dados MySQL
     $servername = "database";
     $dbname = "dbexemplo";
     $username = "root";
