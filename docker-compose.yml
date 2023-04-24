@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: Senha123
+      MYSQL_DATABASE: dbexemplo
+    ports:
+      - 3306:3306
+    networks:
+      - rede-exemplo
+    volumes:
+      - ./resources/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  web:
+    build: .
+    networks:
+      - rede-exemplo
+    depends_on:
+      - database
+    volumes:
+      - ./app:/var/www/html/
+    ports:
+      - 80:80
+
+networks:
+  rede-exemplo:
